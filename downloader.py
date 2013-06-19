@@ -13,7 +13,7 @@ class Aria2c:
     def __init__(self):
         pid = os.getpid()
         command = ['aria2c', '--enable-rpc', '--continue', '--stop-with-process=%s' % pid, '--file-allocation=none']
-        subprocess.Popen(command, shell=True)
+        subprocess.Popen(command, shell=False)
         self.aria2 = xmlrpclib.ServerProxy('http://localhost:6800/rpc').aria2
     
     def add_download(self, args):
